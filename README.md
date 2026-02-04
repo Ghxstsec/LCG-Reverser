@@ -1,56 +1,56 @@
 # 🛡️ LCG Predictor & Cryptanalysis Tool
 
-This repository contains a Python-based exploit/tool designed to reverse engineer **Linear Congruential Generators (LCG)**. By observing a small window of output, this script can derive the internal constants and predict every future number in the sequence from a table.
+Este repositorio contiene una herramienta/exploit desarrollado en Python diseñado para realizar ingeniería inversa a los **Generadores Congruenciales Lineales (LCG)**. Al observar una pequeña ventana de salida, este script puede derivar las constantes internas y predecir cada número futuro de la secuencia, siempre teniendo en cuenta que se necesitara saber 4 puntos de una tabla en total.
 
 ---
 
-## 📖 Theoretical Background
+## 📖 Trasfondo Teórico
 
-A Linear Congruential Generator (LCG) is a common algorithm for yielding a sequence of pseudo-randomized numbers. It is defined by the recurrence relation:
+Un Generador Congruencial Lineal (LCG) es un algoritmo común para generar una secuencia de números pseudo-aleatorios. Se define por la siguiente relación de recurrencia:
 
 $$X_{n+1} = (a \cdot X_n + c) \pmod m$$
 
-Where:
-* **$X$**: The sequence of pseudo-random values.
-* **$m > 0$**: The "modulus".
-* **$a$**: The "multiplier" ($0 < a < m$).
-* **$c$**: The "increment" ($0 \le c < m$).
+Donde:
+* **$X$**: La secuencia de valores pseudo-aleatorios.
+* **$m > 0$**: El "módulo".
+* **$a$**: El "multiplicador" ($0 < a < m$).
+* **$c$**: El "incremento" ($0 \le c < m$).
 
-While fast, LCGs are **not cryptographically secure**. If the modulus ($m$) is known, we only need three consecutive values to completely break the generator.
+Aunque son rápidos, los LCG **no son criptográficamente seguros**. Si el módulo ($m$) es conocido, solo necesitamos tres valores consecutivos para romper completamente el generador.
 
 ---
 
-## 🧠 How the Exploit Works
+## 🧠 Cómo funciona el Exploit
 
-The tool performs a **Three-Point Attack**:
+La herramienta realiza un **Ataque de Tres Puntos**:
 
-1.  **Calculate the Multiplier ($a$):**
-    The difference between consecutive values follows the rule: 
+1.  **Calcular el Multiplicador ($a$):**
+    La diferencia entre valores consecutivos sigue la regla: 
     $(X_3 - X_2) \equiv a(X_2 - X_1) \pmod m$.
-    We solve for $a$ by calculating the **Modular Multiplicative Inverse** of $(X_2 - X_1)$.
+    Resolvemos para $a$ calculando el **Inverso Multiplicativo Modular** de $(X_2 - X_1)$.
 
-2.  **Calculate the Increment ($c$):**
-    Once $a$ is known, $c$ is found via: 
+2.  **Calcular el Incremento ($c$):**
+    Una vez conocido $a$, hallamos $c$ mediante: 
     $c \equiv (X_2 - aX_1) \pmod m$.
 
-3.  **Verification:**
-    The script validates the constants against the third known value to ensure the prediction is 100% accurate.
+3.  **Verificación:**
+    El script valida las constantes contra el tercer valor conocido para asegurar que la predicción sea 100% precisa.
 
 ---
 
-## 🚀 Features
+## 🚀 Características
 
-* **Interactive CLI:** Input values in real-time during CTFs.
-* **High Precision:** Handles extremely large prime moduli (e.g., 64-bit integers).
-* **No Dependencies:** Uses pure Python 3.8+ (`pow(a, -1, m)` logic).
-* **Fast Prediction:** Instantaneously derives constants and predicts the next state.
+* **CLI Interactivo:** Introduce valores en tiempo real durante CTFs.
+* **Alta Precisión:** Maneja módulos primos extremadamente grandes (ej. enteros de 64 bits).
+* **Sin Dependencias:** Utiliza Python 3.8+ puro (lógica `pow(a, -1, m)`).
+* **Predicción Rápida:** Deriva las constantes y predice el siguiente estado de forma instantánea.
 
 ---
 
-## 🛠️ Usage
+## 🛠️ Uso
 
-1. **Clone the repo:**
+1. **Clonar el repo:**
    ```bash
-   git clone [https://github.com/your-user/lcg-predictor.git](https://github.com/your-user/lcg-predictor.git)
-   cd lcg-predictor
-   python3 scriptlcgpredictor.py
+   git clone [https://github.com/tu-usuario/lcg-predictor.git](https://github.com/tu-usuario/lcg-predictor.git)
+   cd lcg-predictor.py
+   python3 lcg-predictor.py
