@@ -2,7 +2,7 @@
 
 Este repositorio contiene una herramienta/exploit desarrollado en Python diseñado para realizar ingeniería inversa a los **Generadores Congruenciales Lineales (LCG)**. Al observar una pequeña ventana de salida, este script puede derivar las constantes internas y predecir cada número futuro de la secuencia, siempre teniendo en cuenta que se necesitara saber 4 puntos de una tabla en total.
 
-Script usado en la explotacion de la maquina **Predictable** de la plataforma **DockerLabs**
+Script usado en el acceso inicial de la maquina **Predictable** de la plataforma **DockerLabs**
 
 ---
 
