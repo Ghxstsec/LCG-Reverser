@@ -53,3 +53,4 @@ The tool performs a **Three-Point Attack**:
    ```bash
    git clone [https://github.com/your-user/lcg-predictor.git](https://github.com/your-user/lcg-predictor.git)
    cd lcg-predictor
+   python3 scriptlcgpredictor.py
