@@ -53,6 +53,6 @@ La herramienta realiza un **Ataque de Tres Puntos**:
 
 1. **Clonar el repo:**
    ```bash
-   git clone [https://github.com/tu-usuario/lcg-predictor.git](https://github.com/tu-usuario/lcg-predictor.git)
+   git clone https://github.com/Ghxstsec/LCG-Reverser.git
    cd lcg-predictor.py
    python3 lcg-predictor.py
